@@ -69,8 +69,7 @@ async function shortener(original_url) {
 
       const duplicate = await collection.findOne({short_url});
       if (!duplicate) {
-        const result = await collection.insertOne({original_url, short_url});
-        console.log(result);
+        await collection.insertOne({original_url, short_url});
         break;
       }
     }

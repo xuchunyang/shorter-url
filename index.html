@@ -28,7 +28,7 @@
         output.textContent = `Shortening ${url}...`;
 
         fetch("api/short?url=" + url)
-          .then(r => r.json)
+          .then(r => r.json())
           .then(j => {
             console.log("JSON result", j);
             if (!j.ok) throw new Error(j.error);
