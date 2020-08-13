@@ -14,7 +14,8 @@
     </form>
     <p class="output"></p>
     <script>
-      // XXX NOT work: Uncaught TypeError: Illegal invocation.  I do not understand why yet.
+      // XXX NOT work: Uncaught TypeError: Illegal invocation.
+      //     I do not understand why yet.
       // const $ = document.querySelector;
 
       const $ = q => document.querySelector(q);
@@ -26,11 +27,18 @@
         const url = input.value;
         output.textContent = `Shortening ${url}...`;
 
-        setTimeout(() => {
-          const shortURL = "https://foo.com";
-          output.innerHTML =
-            `<a href="${shortURL}" target="_blank">${shortURL}</a`;
-        }, 1000);
+        fetch("api/short?url=" + url)
+          .then(r => r.json)
+          .then(j => {
+            console.log("JSON result", j);
+            if (!j.ok) throw new Error(j.error);
+            const shortURL = j.short_url;
+            output.innerHTML =
+              `<a href="${shortURL}" target="_blank">${shortURL}</a`;
+          })
+          .catch(err => {
+            output.textContent = `Error: ${err.message}`;
+          });
       };
     </script>
   </body>
