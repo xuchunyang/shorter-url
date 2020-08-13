@@ -56,7 +56,7 @@ function isURL(url) {
 async function shortener(original_url) {
   const { MongoClient } = require("mongodb");
   const client = new MongoClient(
-    // mongodb+srv://<user>:<password>@my-cluster-uf345.mongodb.net/<database-name>?retryWrites=true
+    // mongodb+srv://xcy:<password>@cluster0.lelfo.azure.mongodb.net/shorter-url-db?retryWrites=true&w=majority
     process.env.MONGODB_URI,
     { useNewUrlParser: true, useUnifiedTopology: true });
 
