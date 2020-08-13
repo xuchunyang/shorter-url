@@ -30,9 +30,10 @@ async function getOriginalURL(short_url) {
   const PASSWORD = "Fh7QKDMbYWkYcqN2";
   const DATABASE = "shorter-url-db";
 
-  const uri = `mongodb+srv://${USER}:${PASSWORD}@cluster0.lelfo.azure.mongodb.net/${DATABASE}?retryWrites=true&w=majority`;
   const { MongoClient } = require("mongodb");
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  const client = new MongoClient(
+    process.env.MONGODB_URI,
+    { useNewUrlParser: true, useUnifiedTopology: true });
 
   try {
     await client.connect();

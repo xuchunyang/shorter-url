@@ -54,13 +54,11 @@ function isURL(url) {
 }
 
 async function shortener(original_url) {
-  const USER = "xcy";
-  const PASSWORD = "Fh7QKDMbYWkYcqN2";
-  const DATABASE = "shorter-url-db";
-
-  const uri = `mongodb+srv://${USER}:${PASSWORD}@cluster0.lelfo.azure.mongodb.net/${DATABASE}?retryWrites=true&w=majority`;
   const { MongoClient } = require("mongodb");
-  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+  const client = new MongoClient(
+    // mongodb+srv://<user>:<password>@my-cluster-uf345.mongodb.net/<database-name>?retryWrites=true
+    process.env.MONGODB_URI,
+    { useNewUrlParser: true, useUnifiedTopology: true });
 
   try {
     await client.connect();
