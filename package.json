@@ -1,5 +1,5 @@
 {
-  "name": "url-shortener",
+  "name": "shorter-url",
   "version": "1.0.0",
   "description": "Make URL shorter (or longer)",
   "main": "none",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xuchunyang/url-shortener.git"
+    "url": "git+https://github.com/xuchunyang/shorter-url.git"
   },
   "author": "Xu Chunyang",
   "license": "GPL-3.0-or-later",
   "bugs": {
-    "url": "https://github.com/xuchunyang/url-shortener/issues"
+    "url": "https://github.com/xuchunyang/shorter-url/issues"
   },
-  "homepage": "https://github.com/xuchunyang/url-shortener#readme",
+  "homepage": "https://github.com/xuchunyang/shorter-url#readme",
   "dependencies": {
     "mongodb": "^3.6.0",
     "shortid": "^2.2.15"

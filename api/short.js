@@ -52,7 +52,7 @@ function isURL(url) {
 async function shortener(original_url) {
   const USER = "xcy";
   const PASSWORD = "Fh7QKDMbYWkYcqN2";
-  const DATABASE = "url-shortener-db";
+  const DATABASE = "shorter-url-db";
 
   const uri = `mongodb+srv://${USER}:${PASSWORD}@cluster0.lelfo.azure.mongodb.net/${DATABASE}?retryWrites=true&w=majority`;
   const { MongoClient } = require("mongodb");
@@ -65,7 +65,7 @@ async function shortener(original_url) {
     let short_url = null;
     while (true) {
       const id = require('shortid').generate();
-      short_url = "https://shortener-url.vercel.app/u/" + id;
+      short_url = "https://shorter-url.vercel.app/u/" + id;
 
       const duplicate = await collection.findOne({short_url});
       if (!duplicate) {
