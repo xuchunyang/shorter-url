@@ -1,3 +1,7 @@
+const PREFIX = process.env.VERCEL_URL ?
+      `https://${process.env.VERCEL_URL}/api/u?id=` :
+      "http://localhost:3000/api/u?id=";
+
 module.exports = (req, res) => {
   res.setHeader("Content-Type", "application/json");
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -65,7 +69,7 @@ async function shortener(original_url) {
     let short_url = null;
     while (true) {
       const id = require('shortid').generate();
-      short_url = "https://shorter-url.vercel.app/u/" + id;
+      short_url = PREFIX + id;
 
       const duplicate = await collection.findOne({short_url});
       if (!duplicate) {
