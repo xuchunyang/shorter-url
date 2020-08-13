@@ -1,5 +1,5 @@
 const PREFIX = process.env.VERCEL_URL ?
-      `https://${process.env.VERCEL_URL}/api/u?id=` :
+      `https://shorter-url.vercel.app/api/u?id=`:
       "http://localhost:3000/api/u?id=";
 
 module.exports = (req, res) => {
