@@ -13,6 +13,7 @@ module.exports = (req, res) => {
   const short_url = PREFIX + id;
   getOriginalURL(short_url)
     .then(original_url => {
+      res.setHeader("Cache-Control", "max-age=0, s-maxage=86400");
       res.statusCode = 301;
       res.setHeader("Location", original_url);
       res.end();
