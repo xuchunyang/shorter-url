@@ -26,10 +26,6 @@ module.exports = (req, res) => {
 }
 
 async function getOriginalURL(short_url) {
-  const USER = "xcy";
-  const PASSWORD = "Fh7QKDMbYWkYcqN2";
-  const DATABASE = "shorter-url-db";
-
   const { MongoClient } = require("mongodb");
   const client = new MongoClient(
     process.env.MONGODB_URI,
@@ -40,8 +36,9 @@ async function getOriginalURL(short_url) {
     const DATABASE = require("url").parse(process.env.MONGODB_URI).pathname.substr(1);
     const collection = client.db(DATABASE).collection("urls");
 
-    const {original_url} = await collection.findOne({short_url});
-    return original_url;
+    const found = await collection.findOne({short_url});
+    if (!found) throw new Error("Invalid short URL");
+    return found.original_url;
   } finally {
     await client.close();
   }
