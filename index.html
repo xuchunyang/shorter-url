@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>URL Shortener</title>
+  </head>
+  <body>
+    <h1>URL Shortener</h1>
+    <form>
+      <label for="url">Enter URL:</label>
+      <input id="url" type="url" required>
+      <button>Shorten URL</button>
+    </form>
+    <p class="output"></p>
+    <script>
+      // XXX NOT work: Uncaught TypeError: Illegal invocation.  I do not understand why yet.
+      // const $ = document.querySelector;
+
+      const $ = q => document.querySelector(q);
+      const input = $("#url");
+      const output = $(".output");
+
+      $("form").onsubmit = e => {
+        e.preventDefault();
+        const url = input.value;
+        output.textContent = `Shortening ${url}...`;
+
+        setTimeout(() => {
+          const shortURL = "https://foo.com";
+          output.innerHTML =
+            `<a href="${shortURL}" target="_blank">${shortURL}</a`;
+        }, 1000);
+      };
+    </script>
+  </body>
+</html>
