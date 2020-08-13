@@ -73,7 +73,7 @@
             if (!j.ok) throw new Error(j.error);
             const shortURL = j.short_url;
             output.innerHTML =
-              `<a href="${shortURL}" target="_blank">${shortURL}</a`;
+              `<a href="${shortURL}">${shortURL}</a`;
           })
           .catch(err => {
             output.textContent = `Error: ${err.message}`;
