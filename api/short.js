@@ -62,6 +62,7 @@ async function shortener(original_url) {
 
   try {
     await client.connect();
+    const DATABASE = require("url").parse(process.env.MONGODB_URI).pathname.substr(1);
     const collection = client.db(DATABASE).collection("urls");
 
     let short_url = null;

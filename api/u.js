@@ -37,6 +37,7 @@ async function getOriginalURL(short_url) {
 
   try {
     await client.connect();
+    const DATABASE = require("url").parse(process.env.MONGODB_URI).pathname.substr(1);
     const collection = client.db(DATABASE).collection("urls");
 
     const {original_url} = await collection.findOne({short_url});
