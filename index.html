@@ -4,9 +4,48 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Shorter URL</title>
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        line-height: 1.5;
+        max-width: 750px;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      form {
+        display: flex;
+        align-items: center;
+      }
+
+      input {
+        flex: 1;
+        margin: 0 0.5em;
+      }
+
+      input,
+      button {
+        font-size: 100%;
+        line-height: inherit;
+      }
+
+      a {
+        text-decoration: none;
+      }
+
+      a:link,
+      a:visited {
+        color: #006cff;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
     <h1>Shorter URL</h1>
+    <p>Make your URL <em>shorter</em> (or <em>longer</em>)</p>
     <form>
       <label for="url">Enter URL:</label>
       <input id="url" type="url" required>
